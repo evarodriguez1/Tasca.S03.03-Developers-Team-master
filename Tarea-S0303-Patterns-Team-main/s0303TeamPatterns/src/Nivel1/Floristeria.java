@@ -1,5 +1,7 @@
 package Nivel1;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Scanner;
 
 public class Floristeria {
@@ -20,7 +22,7 @@ public class Floristeria {
         return floristeria;
     }
 
-    void crearStock(String tipo) {
+    public static void crearStock(@NotNull String tipo) {
        // String tipo = ingresarString("Elige el tipo de Articulo que deseas crear (A, F o D): ");
 
         String tipoLower = tipo.toLowerCase();
@@ -36,14 +38,10 @@ public class Floristeria {
             case "d":
                 StockDecoracion stockDecoracion = new StockDecoracion();
                 System.out.println("se ha creado un stock de decoracion");
-
                 break;
             default:
                 System.out.println("La opción no es válida, elige A, F o D.");
         }
-
-
-
 
 
     /*
