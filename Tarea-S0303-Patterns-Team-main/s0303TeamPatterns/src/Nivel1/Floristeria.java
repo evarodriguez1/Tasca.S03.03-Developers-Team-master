@@ -10,7 +10,7 @@ public class Floristeria {
     private String nombre;
 
     private static Floristeria floristeria;
-    private static ArrayList<Floristeria> dbFloristerias= new ArrayList <Floristeria> ();
+
 
     public Floristeria(String nombre) {
         this.nombre = nombre;
@@ -27,32 +27,7 @@ public class Floristeria {
    public String getNombre() {
        return nombre;
    }
-    public void crearFloristeria(String nombre) {
-        if (dbFloristerias.isEmpty()) {
-            dbFloristerias.add(new Floristeria(nombre));
-        }else if (!existeFloristeria(nombre)) {
-            dbFloristerias.add(new Floristeria(nombre));
-        }else{
-            System.out.println("La floristeria ya existe");
-        }
 
-
-    }
-
-    static boolean existeFloristeria(String nombre) {
-        boolean floristeriaEnApp = false;
-        int indice=0;
-
-        while( floristeriaEnApp==false&&indice<dbFloristerias.size()) {
-            if(nombre.equalsIgnoreCase(dbFloristerias.get(indice).getNombre())){
-                floristeriaEnApp =true;
-            } else {
-                indice ++;
-            }
-        }
-
-        return floristeriaEnApp;
-    }
 
 
 

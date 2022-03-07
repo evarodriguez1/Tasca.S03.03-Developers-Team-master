@@ -1,9 +1,10 @@
 package Nivel1;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AppMenu {
-
+    private static ArrayList<Floristeria> dbFloristerias= new ArrayList <Floristeria> ();
     public static int mostrarMenu() {
 
         int opcionElegida;
@@ -37,7 +38,7 @@ public class AppMenu {
                 case 1:
                     String nombre = ingresarString("Cual es el nombre de la floristeria:");
                    // fl = Floristeria.crearFloristeria(nombre);
-//hola
+
                     break;
                 case 2:
                     String tipoArticulo = ingresarString("Que tipo de articulo quieres añadir (A,F,D):");
@@ -62,6 +63,31 @@ public class AppMenu {
         String palabra = input.nextLine();
         return  palabra;
     }
+    public void crearFloristeria(String nombre) {
+        if (dbFloristerias.isEmpty()) {
+            dbFloristerias.add(new Floristeria(nombre));
+        }else if (!existeFloristeria(nombre)) {
+            dbFloristerias.add(new Floristeria(nombre));
+        }else{
+            System.out.println("La floristeria ya existe");
+        }
 
+
+    }
+
+    static boolean existeFloristeria(String nombre) {
+        boolean floristeriaEnApp = false;
+        int indice=0;
+
+        while( floristeriaEnApp==false&&indice<dbFloristerias.size()) {
+            if(nombre.equalsIgnoreCase(dbFloristerias.get(indice).getNombre())){
+                floristeriaEnApp =true;
+            } else {
+                indice ++;
+            }
+        }
+
+        return floristeriaEnApp;
+    }
 
 }
