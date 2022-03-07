@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Scanner;
 
 public class Floristeria {
-
+/*
     String nombre;
 
     private static Floristeria floristeria;
@@ -52,7 +52,7 @@ public class Floristeria {
 
      */
 
-    }
+
 
     static double ingresarDouble(String mensaje) {
         Scanner input = new Scanner(System.in);
@@ -74,4 +74,6 @@ public class Floristeria {
         String stringIngresado = input.nextLine().toLowerCase();
         return stringIngresado;
     }
+
 }
+
