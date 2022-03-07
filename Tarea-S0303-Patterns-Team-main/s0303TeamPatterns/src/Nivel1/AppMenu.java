@@ -36,7 +36,7 @@ public class AppMenu {
             switch(mostrarMenu()) {
                 case 1:
                     String nombre = ingresarString("Cual es el nombre de la floristeria:");
-                    fl = Floristeria.crearFloristeria(nombre);
+                   // fl = Floristeria.crearFloristeria(nombre);
 //hola
                     break;
                 case 2:

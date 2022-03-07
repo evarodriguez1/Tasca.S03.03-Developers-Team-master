@@ -1,29 +1,63 @@
 package Nivel1;
 
-import org.jetbrains.annotations.NotNull;
 
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Floristeria {
-/*
-    String nombre;
+
+    private String nombre;
 
     private static Floristeria floristeria;
+    private static ArrayList<Floristeria> dbFloristerias= new ArrayList <Floristeria> ();
 
     public Floristeria(String nombre) {
         this.nombre = nombre;
     }
 
-    // fijarse para crear varias floristerias
+   /* // fijarse para crear varias floristerias
     public static Floristeria crearFloristeria(String nombre) {
         if (floristeria == null) {
             floristeria = new Floristeria(nombre);
         }
         return floristeria;
+    }*/
+   public String getNombre() {
+       return nombre;
+   }
+    public void crearFloristeria(String nombre) {
+        if (dbFloristerias.isEmpty()) {
+            dbFloristerias.add(new Floristeria(nombre));
+        }else if (!existeFloristeria(nombre)) {
+            dbFloristerias.add(new Floristeria(nombre));
+        }else{
+            System.out.println("La floristeria ya existe");
+        }
+
+
     }
 
-    public static void crearStock(@NotNull String tipo) {
-       // String tipo = ingresarString("Elige el tipo de Articulo que deseas crear (A, F o D): ");
+    static boolean existeFloristeria(String nombre) {
+        boolean floristeriaEnApp = false;
+        int indice=0;
+
+        while( floristeriaEnApp==false&&indice<dbFloristerias.size()) {
+            if(nombre.equalsIgnoreCase(dbFloristerias.get(indice).getNombre())){
+                floristeriaEnApp =true;
+            } else {
+                indice ++;
+            }
+        }
+
+        return floristeriaEnApp;
+    }
+
+
+
+
+    public static void crearStock(String tipo) {
+        // String tipo = ingresarString("Elige el tipo de Articulo que deseas crear (A, F o D): ");
 
         String tipoLower = tipo.toLowerCase();
         switch (tipoLower) {
@@ -52,7 +86,7 @@ public class Floristeria {
 
      */
 
-
+    }
 
     static double ingresarDouble(String mensaje) {
         Scanner input = new Scanner(System.in);
@@ -76,4 +110,6 @@ public class Floristeria {
     }
 
 }
+
+
 
