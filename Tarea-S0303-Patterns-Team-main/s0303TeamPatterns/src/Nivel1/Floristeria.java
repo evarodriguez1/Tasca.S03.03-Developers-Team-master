@@ -23,6 +23,7 @@ public class Floristeria {
         }
         return floristeria;
     }*/
+    //NUEVOS METODOS AÑADIDOS
    public String getNombre() {
        return nombre;
    }
