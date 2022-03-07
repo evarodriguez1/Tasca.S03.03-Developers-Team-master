@@ -37,6 +37,7 @@ public class AppMenu {
                 case 1:
                     String nombre = ingresarString("Cual es el nombre de la floristeria:");
                     fl = Floristeria.crearFloristeria(nombre);
+//hola
                     break;
                 case 2:
                     String tipoArticulo = ingresarString("Que tipo de articulo quieres añadir (A,F,D):");
