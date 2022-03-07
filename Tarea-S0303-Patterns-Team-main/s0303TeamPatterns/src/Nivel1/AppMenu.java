@@ -38,6 +38,7 @@ public class AppMenu {
                 case 1:
                     String nombre = ingresarString("Cual es el nombre de la floristeria:");
                    // fl = Floristeria.crearFloristeria(nombre);
+                    crearFloristeria(nombre);
 
                     break;
                 case 2:
@@ -63,7 +64,7 @@ public class AppMenu {
         String palabra = input.nextLine();
         return  palabra;
     }
-    public void crearFloristeria(String nombre) {
+    public static void crearFloristeria(String nombre) {
         if (dbFloristerias.isEmpty()) {
             dbFloristerias.add(new Floristeria(nombre));
         }else if (!existeFloristeria(nombre)) {
