@@ -11,12 +11,9 @@ public class StockArbol extends Stock {
     }
 
     public void crearArticulo() {
-        System.out.println("Ingrese el nombre del árbol:");
-        String nombre = ingresarString();
-        System.out.println("Ingrese el precio:");
-        double precio = ingresarDouble();
-        System.out.println("Ingrese la altura:");
-        double altura = ingresarDouble();
+        String nombre = ingresarString("Nombre Arbol:");
+        double precio = ingresarDouble("Ingrese el precio:");
+        double altura = ingresarDouble("Ingrese la altura:");
         dbArbol.add(new Arbol(nombre, precio, altura));
 
     }
@@ -33,7 +30,7 @@ public class StockArbol extends Stock {
         }
     }
 
-    public void imprimirStockArbol() {
+    public void imprimirStock() {
         dbArbol.forEach(x -> System.out.println("ID: A" + x.getID() + " / Nombre: " + x.getNombre() + " / Precio: €" + x.getPrecio() + " / Altura: " + x.getAltura() + "mts."));
 
     }
