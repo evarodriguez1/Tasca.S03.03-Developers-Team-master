@@ -16,11 +16,11 @@ public class AppMenu {
             System.out.println("1. crear floristeria.");
             System.out.println("2. crear producto y añadirlo al stock.");
             System.out.println("3. imprimir stock.");
-            System.out.println("4. Ventas totales.");
-            System.out.println("5. imprimir cantidades stock.");
-            System.out.println("6. crear ticket y mostrarlo.");
-            System.out.println("7. mostrar todos los tickets.");
-            System.out.println("8. eliminar ticket.");
+            System.out.println("4. imprimir cantidades stock.");
+            System.out.println("5. crear ticket y mostrarlo.");
+            System.out.println("6. mostrar todos los tickets.");
+            System.out.println("7. Ventas totales.");
+            System.out.println("8. Eliminar articulo.");
             System.out.println("0. Salir de la aplicación.\n");
 
             opcionElegida = ingresarInt("Escoge una opción del 0 al 8: ");
@@ -68,6 +68,12 @@ public class AppMenu {
                         getFloristeriaMenu(floristeria).imprimirStocks();
                     }
                    break;
+                case 4:
+                    floristeria = ingresarString("En que floristeria quieres realizar la acción?");
+                    if (existeFloristeria(floristeria)){
+                        getFloristeriaMenu(floristeria).mostrarCantidadStock();
+                    }
+                    break;
                 case 0 :
                     salir=true;
                     break;

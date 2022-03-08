@@ -96,7 +96,11 @@ public class Floristeria {
         stockDecoracion.imprimirStock();
         stockFlor.imprimirStock();
     }
-
+    public void mostrarCantidadStock() {
+        stockArbol.mostrarCantidadStock();
+        stockDecoracion.mostrarCantidadStock();
+        stockFlor.mostrarCantidadStock();
+    }
 
     static double ingresarDouble(String mensaje) {
         Scanner input = new Scanner(System.in);
