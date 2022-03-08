@@ -11,9 +11,12 @@ public class StockDecoracion extends Stock{
     }
 
     public void crearArticulo() {
-        String nombre = ingresarString("Nombre Decoración:");
-        double precio = ingresarDouble("Ingrese el precio:");
-        String material = ingresarString("Ingrese el material:");
+        System.out.println("Ingrese el nombre de la decoración:");
+        String nombre = ingresarString();
+        System.out.println("Ingrese el precio:");
+        double precio = ingresarDouble();
+        System.out.println("Ingrese el material:");
+        String material = ingresarString();
         dbDecoracion.add(new Decoracion (nombre,precio,material));
     }
 
@@ -29,7 +32,7 @@ public class StockDecoracion extends Stock{
         }
     }
 
-    public void imprimirStock() {
+    public void imprimirStockDecoracion() {
         dbDecoracion.forEach(x->System.out.println("ID: D"+x.getID()+" / Nombre: "+x.getNombre()+" / "+x.getPrecio()+" / "+x.getMaterial()));
     }
 
