@@ -4,17 +4,16 @@ import java.util.ArrayList;
 
 public class StockArbol extends Stock {
 
-    public ArrayList<Arbol> dbArbol;
+
 
     public StockArbol() {
-        dbArbol = new ArrayList<Arbol>();
     }
 
     public void crearArticulo() {
         String nombre = ingresarString("Nombre Arbol:");
         double precio = ingresarDouble("Ingrese el precio:");
         double altura = ingresarDouble("Ingrese la altura:");
-        dbArbol.add(new Arbol(nombre, precio, altura));
+        dbArbol.add(new Arbol(nombre, precio, altura)); //inyeccion de  dependencia
 
     }
 
@@ -23,7 +22,6 @@ public class StockArbol extends Stock {
         while (i < dbArbol.size()) {
             if (idArticulo == dbArbol.get(i).getID()) {
                 dbArbol.remove(i);
-                msjEliminación();
             } else {
                 i++;
             }
@@ -47,5 +45,12 @@ public class StockArbol extends Stock {
         }
         return valorTotalArboles;
     }
-
+    /*
+    public Arbol getArbol(int idArbol){
+        int i=0;
+        while (i<dbArbol.size()){
+            if(idArbol==dbArbol.)
+        }
+    }
+*/
 }

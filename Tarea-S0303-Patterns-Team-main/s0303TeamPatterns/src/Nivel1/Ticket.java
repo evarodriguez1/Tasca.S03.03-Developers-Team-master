@@ -4,9 +4,23 @@ import java.util.ArrayList;
 //nos falta una clase de ventas
 public class Ticket {
 
-    public ArrayList<IArticulo> listaArticulos = new ArrayList<IArticulo>();
+    public ArrayList<Articulo> listaArticulos= new ArrayList<Articulo>();
+    private static int id = 0;
+    private  int idTicket;
 
-    public void addArticulo (IArticulo articulo){
+    Ticket(){
+
+        idTicket=Ticket.id++;
+    }
+    public ArrayList<Articulo> getTicket (){
+        return listaArticulos;
+    }
+    public  int getID (){
+        return idTicket;
+    }
+
+    public void addArticuloAlTicket (Articulo articulo){
+
         listaArticulos.add(articulo);
     }
 
@@ -20,6 +34,12 @@ public class Ticket {
             totalVentas+= listaArticulos.get(i).getPrecio();
         }
        return Math.round(totalVentas*100d)/100d;
+    }
+    public int getIdTicket() {
+        return idTicket;
+    }
+    public String toString(){
+        return listaArticulos.toString();
     }
 
 }

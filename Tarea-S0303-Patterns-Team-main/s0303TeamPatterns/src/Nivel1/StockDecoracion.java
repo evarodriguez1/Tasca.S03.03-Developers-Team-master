@@ -4,10 +4,9 @@ import java.util.ArrayList;
 
 public class StockDecoracion extends Stock{
 
-    public ArrayList<Decoracion> dbDecoracion;
+
 
     public StockDecoracion() {
-        dbDecoracion = new ArrayList<Decoracion>();
     }
 
     public void crearArticulo() {
@@ -22,7 +21,7 @@ public class StockDecoracion extends Stock{
         while (i<dbDecoracion.size()){
             if (idArticulo == dbDecoracion.get(i).getID()){
                 dbDecoracion.remove(i);
-                msjEliminación();
+
             } else {
                 i++;
             }

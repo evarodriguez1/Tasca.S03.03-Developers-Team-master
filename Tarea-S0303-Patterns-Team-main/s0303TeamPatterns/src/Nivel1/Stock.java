@@ -1,101 +1,117 @@
 package Nivel1;
 
 
+import java.lang.invoke.SwitchPoint;
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Locale;
 import java.util.Scanner;
 
-public class Stock implements IStock{
+public class Stock {
+    protected ArrayList<Arbol> dbArbol = new ArrayList<Arbol>();
+    protected ArrayList<Flor> dbFlor= new  ArrayList<Flor>();
+    protected ArrayList<Decoracion> dbDecoracion = new ArrayList<Decoracion>();
 
     //SCANNERS
-    static double ingresarDouble (String mensaje) {
+    public static double ingresarDouble(String mensaje) {
         Scanner input = new Scanner (System.in);
-        System.out.println(mensaje);
-        double doubleIngresado =input.nextDouble();
-        return doubleIngresado;
+        double numero=0.0;
+        boolean correcto = false;
+        do {
+            System.out.println(mensaje);
+            try{
+                numero = input.nextDouble();
+                correcto=true;
+            }catch (InputMismatchException ex){
+                System.out.println("Error de formato, mire que sean numeros separados por coma");
+            }
+            input.nextLine();
+        }while (!correcto);
+        return  numero;
     }
-    static int ingresarInt (String mensaje) {
+    public static int ingresarInt(String mensaje) {
         Scanner input = new Scanner (System.in);
-        System.out.println(mensaje);
-        int intIngresado =input.nextInt();
-        return intIngresado;
+        int numero= 0;
+        boolean correcto = false;
+        do {
+            System.out.println(mensaje);
+            try{
+                numero = input.nextInt();
+                correcto=true;
+            }catch (InputMismatchException ex){
+                System.out.println("Error de formato, mire que sean numeros ");
+            }
+            input.nextLine();
+        }while (!correcto);
+        return  numero;
     }
-    static String ingresarString (String mensaje) {
-        Scanner input = new Scanner(System.in);
-        System.out.println(mensaje);
-        String stringIngresado = input.nextLine().toLowerCase();
-        return stringIngresado;
+    public static String ingresarString(String mensaje) {
+        Scanner input = new Scanner (System.in);
+        String palabra= "";
+        boolean correcto = false;
+        do {
+            System.out.println(mensaje);
+            try{
+                palabra = input.nextLine();
+                correcto=true;
+            }catch (Exception ex){
+                System.out.println("Error de formato ");
+            }
+            input.nextLine();
+        }while (!correcto);
+
+        return  palabra;
     }
-    //TEXTOS
-    public void msjEliminación () {
-        System.out.println("El articulo ha sido eliminado");
-    }
 
-
-    public Stock (){
-
-
+   public Stock (){
 
     }
 
     public void crearArticulo(){
-        /*
-        String tipoLower=tipo.toLowerCase();
-        switch (tipoLower) {
-            case "a":
-                crearArbol();
-                break;
-            case "f":
-                crearFlor();
-                break;
-            case "d":
-                crearDecoracion();
-                break;
-            default:
-                System.out.println("La opción no es válida, elige A, F o D.");
-
-
-        }
-
-         */
     }
 
     public void eliminarArticulo(int idArticulo){
-        /*
-        int id=ingresarInt("Ingrese el ID del Articulo:");
-        String tipoLower=tipo.toLowerCase();
-
-        switch (tipoLower) {
-            case "a":
-                eliminarArbol(id);
-                break;
-            case "f":
-                eliminarFlor(id);
-                break;
-            case "d":
-                eliminarDecoracion(id);
-                break;
-            default:
-                System.out.println("La opción no es válida, elige A, F o D.");
-        }
-
-         */
     }
 
     public void imprimirStock(){
-
-       /* getDbArbol();
-        getDbDecoracion();
-        getDbFlor();
-
-        */
     }
 
     public void mostrarCantidadStock(){
-
     }
 
     public double sumatoriaValorStock(){
         return 0;
     }
+
+    public Articulo getArticulo (int idArticulo, String tipo){
+        Articulo articulo = null;
+
+
+
+        switch (tipo.toLowerCase()){
+            case "a":
+                for (int i=0; i<dbArbol.size();i++){
+                    if(dbArbol.get(i).getID()==idArticulo);
+                    articulo= dbArbol.get(i);
+                }
+                break;
+            case "d":
+                for (int i=0; i<dbDecoracion.size();i++){
+                    if(dbDecoracion.get(i).getID()==idArticulo);
+                    articulo= dbDecoracion.get(i);
+                }
+                break;
+            case "f":
+                for (int i=0; i<dbFlor.size();i++){
+                    if(dbFlor.get(i).getID()==idArticulo);
+                    articulo= dbFlor.get(i);
+                }
+                break;
+        }
+        return articulo;
+    }
+
+
 
 
 }

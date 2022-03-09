@@ -1,33 +1,30 @@
 package Nivel1;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
+
 
 public class AppMenu {
     private static ArrayList<Floristeria> dbFloristerias= new ArrayList <Floristeria> ();
     public int mostrarMenu() {
 
         int opcionElegida=0;
-        final byte MINIMO = 0;
-        final byte MAXIMO = 8;
 
-       // do {
             System.out.println("\nMENÚ PRINCIPAL");
             System.out.println("1. crear floristeria.");
             System.out.println("2. crear producto y añadirlo al stock.");
-            System.out.println("3. imprimir stock.");
-            System.out.println("4. imprimir cantidades stock.");
-            System.out.println("5. crear ticket y mostrarlo.");
-            System.out.println("6. mostrar todos los tickets.");
-            System.out.println("7. Ventas totales.");
-            System.out.println("8. Eliminar articulo.");
+            System.out.println("3. Eliminar articulo.");
+            System.out.println("4. imprimir stock.");
+            System.out.println("5. imprimir cantidades stock.");
+            System.out.println("6. crear ticket y mostrarlo.");
+            System.out.println("7. mostrar todos los tickets.");
+            System.out.println("8. Ventas totales.");
+
             System.out.println("0. Salir de la aplicación.\n");
 
             opcionElegida = ingresarInt("Escoge una opción del 0 al 8: ");
-            //if (opcionElegida < MINIMO || opcionElegida > MAXIMO) {
-             //   System.out.println("Escoge una opcion válida.");
-           // }
-       // } while (opcionElegida < MINIMO || opcionElegida > MAXIMO);
+
         return opcionElegida;
     }
 
@@ -37,20 +34,20 @@ public class AppMenu {
         Floristeria fl = null;
         boolean salir = false;
         String floristeria= "";
+        String tipoArticulo;
         do{
             switch(mostrarMenu()) {
                 case 1:
                     String nombre = ingresarString("Cual es el nombre de la floristeria:");
-                    // fl = Floristeria.crearFloristeria(nombre);
                     crearFloristeria(nombre);
 
                     break;
                 case 2:
                    floristeria = ingresarString("En que floristeria quieres realizar la acción?");
-                   String tipoArticulo = ingresarString("Que tipo de articulo quieres añadir (A,F,D):");
 
 
                    if (existeFloristeria(floristeria)){ //comprueba que existe la floristeria
+                       tipoArticulo=ingresarString("Que tipo de articulo quieres añadir (A,F,D):");
                        if (tipoLetra(tipoArticulo)){ //comprueba que la letra inserida es correcta
                            getFloristeriaMenu(floristeria).getStock(tipoArticulo).crearArticulo(); //crea y añade al stock un articulo
                            msjArticuloCreado();
@@ -64,16 +61,53 @@ public class AppMenu {
                    break;
                 case 3:
                     floristeria = ingresarString("En que floristeria quieres realizar la acción?");
+                    int idArticulo;
+
+                    if (existeFloristeria(floristeria)){ //comprueba que existe la floristeria
+                        tipoArticulo=ingresarString("Que tipo de articulo quieres añadir (A,F,D):");
+                        if (tipoLetra(tipoArticulo)){ //comprueba que la letra inserida es correcta
+                            getFloristeriaMenu(floristeria).getStock(tipoArticulo).eliminarArticulo(ingresarInt("Ingrese el id del articulo:")); //elimina del stock un articulo
+                            msjArticuloEliminado();
+
+                        }else{
+                            msjLetraErronea();
+                        }
+                    }else{
+                        msjNoExiste();
+                    }
+                    break;
+                case 4:
+                    floristeria = ingresarString("En que floristeria quieres realizar la acción?");
                     if (existeFloristeria(floristeria)){
                         getFloristeriaMenu(floristeria).imprimirStocks();
                     }
                    break;
-                case 4:
+                case 5:
                     floristeria = ingresarString("En que floristeria quieres realizar la acción?");
                     if (existeFloristeria(floristeria)){
                         getFloristeriaMenu(floristeria).mostrarCantidadStock();
                     }
                     break;
+                case 6 :
+                    floristeria = ingresarString("En que floristeria quieres realizar la acción?");
+                    Floristeria floristeria1 = null;
+
+                    if (existeFloristeria(floristeria)){
+                        floristeria1=getFloristeriaMenu(floristeria);
+                        floristeria1.addArtiuclosTicket(floristeria1);
+                    }
+                    break;
+                case 7 :
+                    floristeria = ingresarString("En que floristeria quieres realizar la acción?");
+                    if (existeFloristeria(floristeria)){
+                        getFloristeriaMenu(floristeria).mostrarTickets();
+                    }
+                    break;
+                case 8 :
+                    floristeria = ingresarString("En que floristeria quieres realizar la acción?");
+                    if (existeFloristeria(floristeria)){
+                        getFloristeriaMenu(floristeria).sumatoriaValorStock();
+                    }
                 case 0 :
                     salir=true;
                     break;
@@ -84,23 +118,54 @@ public class AppMenu {
         }while (!salir);
     }
 
-    // SCANNERS
+    // SCANNERS --> falta añadir comprobacion o exception para que los valores ingresados sean los correctos
     public static double ingresarDouble(String mensaje) {
-        System.out.println(mensaje);
         Scanner input = new Scanner (System.in);
-        double numero = input.nextDouble();
+        double numero=0.0;
+        boolean correcto = false;
+        do {
+            System.out.println(mensaje);
+            try{
+                numero = input.nextDouble();
+                correcto=true;
+            }catch (InputMismatchException ex){
+                System.out.println("Error de formato, mire que sean numeros separados por coma");
+            }
+            input.nextLine();
+        }while (!correcto);
         return  numero;
     }
     public static int ingresarInt(String mensaje) {
-        System.out.println(mensaje);
         Scanner input = new Scanner (System.in);
-        int numero = input.nextInt();
+        int numero= 0;
+        boolean correcto = false;
+        do {
+            System.out.println(mensaje);
+            try{
+                numero = input.nextInt();
+                correcto=true;
+            }catch (InputMismatchException ex){
+                System.out.println("Error de formato, mire que sean numeros ");
+            }
+            input.nextLine();
+        }while (!correcto);
         return  numero;
     }
     public static String ingresarString(String mensaje) {
-        System.out.println(mensaje);
         Scanner input = new Scanner (System.in);
-        String palabra = input.nextLine();
+        String palabra= "";
+        boolean correcto = false;
+        do {
+            System.out.println(mensaje);
+            try{
+                palabra = input.nextLine();
+                correcto=true;
+            }catch (Exception ex){
+                System.out.println("Error de formato ");
+            }
+            input.nextLine();
+        }while (!correcto);
+
         return  palabra;
     }
 
@@ -109,10 +174,13 @@ public class AppMenu {
         System.out.println("Lo sentimos, el nombre ingresado no existe en nuestra base de datos");
     }
     public static void msjLetraErronea(){
-        System.out.println("La letra introducida es erronea vulevalo a intentar");
+        System.out.println("La letra introducida es erronea vuelvalo a intentar");
     }
-    public  static void msjArticuloCreado(){
+    public static void msjArticuloCreado(){
         System.out.println("Articulo creado con éxito");
+    }
+    public static void msjArticuloEliminado (){
+        System.out.println("Articulo eliminado");
     }
 
     //
@@ -126,6 +194,7 @@ public class AppMenu {
         }
 
     }
+
     static Floristeria getFloristeriaMenu(String nombre){
         int i = 0;
         Floristeria f1= null;
@@ -138,6 +207,7 @@ public class AppMenu {
             }
         }
         return f1;
+
 
     }
     // COMPROBACIONES
@@ -155,6 +225,7 @@ public class AppMenu {
 
         return floristeriaEnApp;
     }
+
     static boolean tipoLetra (String nombre){
        boolean letraAdecuada= false;
        if(nombre.equalsIgnoreCase("a")||nombre.equalsIgnoreCase("d")||nombre.equalsIgnoreCase("f")){

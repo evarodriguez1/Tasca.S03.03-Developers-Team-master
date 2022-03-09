@@ -1,11 +1,9 @@
 package Nivel1;
 
-public class Arbol implements IArticulo{
+public class Arbol extends Articulo{
 
     private static int id = 0;
-    private int idArbol;
-    private String nombre;
-    private double precio;
+
     private double altura;
     private static final String tipo = "A";
 
@@ -13,26 +11,7 @@ public class Arbol implements IArticulo{
         this.nombre = nombre;
         this.precio = precio;
         this.altura = altura;
-        idArbol=Arbol.id++;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    @Override
-    public int getID() {
-        return idArbol;
-    }
-
-    @Override
-    public double getPrecio() {
-        return precio;
-    }
-
-    @Override
-    public String getTipo() {
-        return tipo;
+        idArticulo=Arbol.id++;
     }
 
     public double getAltura() {

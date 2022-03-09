@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class StockFlor extends Stock{
 
-    public ArrayList<Flor> dbFlor;
+
 
     public StockFlor() {
-        dbFlor = new ArrayList<Flor>();
+
     }
 
     public void crearArticulo() {
@@ -22,7 +22,7 @@ public class StockFlor extends Stock{
         while (i<dbFlor.size()){
             if (idArticulo == dbFlor.get(i).getID()){
                 dbFlor.remove(i);
-                msjEliminación();
+
             } else {
                 i++;
             }
