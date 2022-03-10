@@ -11,9 +11,9 @@ public class StockFlor extends Stock{
     }
 
     public void crearArticulo() {
-        String nombre = ingresarString("Nombre Flor:");
-        double precio = ingresarDouble("Ingrese el precio:");
-        String color = ingresarString("Ingrese el color:");
+        String nombre = teclado.ingresarString("Nombre Flor:");
+        double precio = teclado.ingresarDouble("Ingrese el precio:");
+        String color = teclado.ingresarString("Ingrese el color:");
         dbFlor.add(new Flor (nombre,precio,color));
     }
 

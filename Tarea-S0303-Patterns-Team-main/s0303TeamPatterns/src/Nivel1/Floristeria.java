@@ -14,6 +14,7 @@ public class Floristeria {
     private Stock stockDecoracion;
     private Stock stockFlor;
     private ArrayList<Ticket> dbTickets;
+    private Teclado teclado= new Teclado();
 
 
 
@@ -63,11 +64,7 @@ public class Floristeria {
         return dbTickets;
     }
 
-    /*  public void valorTotalTienda(){
-            double sumatoriaTotalTienda = get + valorTotalDecoracion + valorTotalFlores;
-        }
 
-         */
     public void imprimirStocks (){
         stockArbol.imprimirStock();
         stockDecoracion.imprimirStock();
@@ -93,7 +90,7 @@ public class Floristeria {
     }
     public void addArtiuclosTicket (Floristeria floristeria){
         boolean ticketEnBD = false;
-        int indice=ingresarInt("Ingresa 1 para añadir un articulo, de lo contrario pulse 0.");
+        int indice=teclado.ingresarInt("Ingresa 1 para añadir un articulo, de lo contrario pulse 0.");
         Object IArticulo;
         Ticket t1 = crearTicket();
         Articulo a1=null;
@@ -102,8 +99,8 @@ public class Floristeria {
 
         while( indice==1) {
 
-            tipoArticulo=ingresarString("Qué tipo de artículo quieres añadir?");
-            idArticulo=ingresarInt("Cual es el id del articulo que quieres añadir?");
+            tipoArticulo=teclado.ingresarString("Qué tipo de artículo quieres añadir?");
+            idArticulo=teclado.ingresarInt("Cual es el id del articulo que quieres añadir?");
             if(existeArticulo(idArticulo,tipoArticulo)) {
                 switch (tipoArticulo.toLowerCase()) {
                     case "a":
@@ -119,7 +116,7 @@ public class Floristeria {
                         t1.addArticuloAlTicket(floristeria.stockFlor.getArticulo(idArticulo, tipoArticulo));
                         stockFlor.eliminarArticulo(idArticulo);
                 }
-                indice = ingresarInt("Ingresa 1 para añadir un articulo, de lo contrario pulse 0.");
+                indice = teclado.ingresarInt("Ingresa 1 para añadir un articulo, de lo contrario pulse 0.");
             }else{
                 System.out.println("El articulo no existe en nuestra base de datos");
             }
@@ -164,39 +161,6 @@ public class Floristeria {
     }
 
 
-    public static int ingresarInt (String mensaje){
-                Scanner input = new Scanner(System.in);
-                int numero = 0;
-                boolean correcto = false;
-                do {
-                    System.out.println(mensaje);
-                    try {
-                        numero = input.nextInt();
-                        correcto = true;
-                    } catch (InputMismatchException ex) {
-                        System.out.println("Error de formato, mire que sean numeros ");
-                    }
-                    input.nextLine();
-                } while (!correcto);
-                return numero;
-            }
-    public static String ingresarString (String mensaje){
-                Scanner input = new Scanner(System.in);
-                String palabra = "";
-                boolean correcto = false;
-                do {
-                    System.out.println(mensaje);
-                    try {
-                        palabra = input.nextLine();
-                        correcto = true;
-                    } catch (Exception ex) {
-                        System.out.println("Error de formato ");
-                    }
-                    input.nextLine();
-                } while (!correcto);
-
-                return palabra;
-            }
 
 }
 

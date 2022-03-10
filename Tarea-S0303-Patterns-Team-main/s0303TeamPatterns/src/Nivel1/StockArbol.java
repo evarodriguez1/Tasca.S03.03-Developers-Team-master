@@ -10,9 +10,9 @@ public class StockArbol extends Stock {
     }
 
     public void crearArticulo() {
-        String nombre = ingresarString("Nombre Arbol:");
-        double precio = ingresarDouble("Ingrese el precio:");
-        double altura = ingresarDouble("Ingrese la altura:");
+        String nombre = teclado.ingresarString("Nombre Arbol:");
+        double precio = teclado.ingresarDouble("Ingrese el precio:");
+        double altura = teclado.ingresarDouble("Ingrese la altura:");
         dbArbol.add(new Arbol(nombre, precio, altura)); //inyeccion de  dependencia
 
     }

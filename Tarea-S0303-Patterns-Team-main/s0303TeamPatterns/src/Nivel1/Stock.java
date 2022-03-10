@@ -11,59 +11,8 @@ public class Stock {
     protected ArrayList<Arbol> dbArbol = new ArrayList<Arbol>();
     protected ArrayList<Flor> dbFlor= new  ArrayList<Flor>();
     protected ArrayList<Decoracion> dbDecoracion = new ArrayList<Decoracion>();
-
-    //SCANNERS
-    public static double ingresarDouble(String mensaje) {
-        Scanner input = new Scanner (System.in);
-        double numero=0.0;
-        boolean correcto = false;
-        do {
-            System.out.println(mensaje);
-            try{
-                numero = input.nextDouble();
-                correcto=true;
-            }catch (InputMismatchException ex){
-                System.out.println("Error de formato, mire que sean numeros separados por coma");
-            }
-            input.nextLine();
-        }while (!correcto);
-        return  numero;
-    }
-    public static int ingresarInt(String mensaje) {
-        Scanner input = new Scanner (System.in);
-        int numero= 0;
-        boolean correcto = false;
-        do {
-            System.out.println(mensaje);
-            try{
-                numero = input.nextInt();
-                correcto=true;
-            }catch (InputMismatchException ex){
-                System.out.println("Error de formato, mire que sean numeros ");
-            }
-            input.nextLine();
-        }while (!correcto);
-        return  numero;
-    }
-    public static String ingresarString(String mensaje) {
-        Scanner input = new Scanner (System.in);
-        String palabra= "";
-        boolean correcto = false;
-        do {
-            System.out.println(mensaje);
-            try{
-                palabra = input.nextLine();
-                correcto=true;
-            }catch (Exception ex){
-                System.out.println("Error de formato ");
-            }
-            input.nextLine();
-        }while (!correcto);
-
-        return  palabra;
-    }
-
-   public Stock (){
+    protected Teclado teclado = new Teclado();
+    public Stock (){
 
     }
 

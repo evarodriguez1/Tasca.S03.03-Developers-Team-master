@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class AppMenu {
     private static ArrayList<Floristeria> dbFloristerias= new ArrayList <Floristeria> ();
+    Teclado teclado= new Teclado();
     public int mostrarMenu() {
 
         int opcionElegida=0;
@@ -23,7 +24,7 @@ public class AppMenu {
 
             System.out.println("0. Salir de la aplicación.\n");
 
-            opcionElegida = ingresarInt("Escoge una opción del 0 al 8: ");
+            opcionElegida = teclado.ingresarInt("Escoge una opción del 0 al 8: ");
 
         return opcionElegida;
     }
@@ -38,16 +39,16 @@ public class AppMenu {
         do{
             switch(mostrarMenu()) {
                 case 1:
-                    String nombre = ingresarString("Cual es el nombre de la floristeria:");
+                    String nombre = teclado.ingresarString("Cual es el nombre de la floristeria:");
                     crearFloristeria(nombre);
 
                     break;
                 case 2:
-                   floristeria = ingresarString("En que floristeria quieres realizar la acción?");
+                   floristeria = teclado.ingresarString("En que floristeria quieres realizar la acción?");
 
 
                    if (existeFloristeria(floristeria)){ //comprueba que existe la floristeria
-                       tipoArticulo=ingresarString("Que tipo de articulo quieres añadir (A,F,D):");
+                       tipoArticulo=teclado.ingresarString("Que tipo de articulo quieres añadir (A,F,D):");
                        if (tipoLetra(tipoArticulo)){ //comprueba que la letra inserida es correcta
                            getFloristeriaMenu(floristeria).getStock(tipoArticulo).crearArticulo(); //crea y añade al stock un articulo
                            msjArticuloCreado();
@@ -60,13 +61,13 @@ public class AppMenu {
                    }
                    break;
                 case 3:
-                    floristeria = ingresarString("En que floristeria quieres realizar la acción?");
+                    floristeria = teclado.ingresarString("En que floristeria quieres realizar la acción?");
                     int idArticulo;
 
                     if (existeFloristeria(floristeria)){ //comprueba que existe la floristeria
-                        tipoArticulo=ingresarString("Que tipo de articulo quieres añadir (A,F,D):");
+                        tipoArticulo=teclado.ingresarString("Que tipo de articulo quieres añadir (A,F,D):");
                         if (tipoLetra(tipoArticulo)){ //comprueba que la letra inserida es correcta
-                            getFloristeriaMenu(floristeria).getStock(tipoArticulo).eliminarArticulo(ingresarInt("Ingrese el id del articulo:")); //elimina del stock un articulo
+                            getFloristeriaMenu(floristeria).getStock(tipoArticulo).eliminarArticulo(teclado.ingresarInt("Ingrese el id del articulo:")); //elimina del stock un articulo
                             msjArticuloEliminado();
 
                         }else{
@@ -77,19 +78,19 @@ public class AppMenu {
                     }
                     break;
                 case 4:
-                    floristeria = ingresarString("En que floristeria quieres realizar la acción?");
+                    floristeria = teclado.ingresarString("En que floristeria quieres realizar la acción?");
                     if (existeFloristeria(floristeria)){
                         getFloristeriaMenu(floristeria).imprimirStocks();
                     }
                    break;
                 case 5:
-                    floristeria = ingresarString("En que floristeria quieres realizar la acción?");
+                    floristeria = teclado.ingresarString("En que floristeria quieres realizar la acción?");
                     if (existeFloristeria(floristeria)){
                         getFloristeriaMenu(floristeria).mostrarCantidadStock();
                     }
                     break;
                 case 6 :
-                    floristeria = ingresarString("En que floristeria quieres realizar la acción?");
+                    floristeria = teclado.ingresarString("En que floristeria quieres realizar la acción?");
                     Floristeria floristeria1 = null;
 
                     if (existeFloristeria(floristeria)){
@@ -98,16 +99,17 @@ public class AppMenu {
                     }
                     break;
                 case 7 :
-                    floristeria = ingresarString("En que floristeria quieres realizar la acción?");
+                    floristeria = teclado.ingresarString("En que floristeria quieres realizar la acción?");
                     if (existeFloristeria(floristeria)){
                         getFloristeriaMenu(floristeria).mostrarTickets();
                     }
                     break;
                 case 8 :
-                    floristeria = ingresarString("En que floristeria quieres realizar la acción?");
+                    floristeria = teclado.ingresarString("En que floristeria quieres realizar la acción?");
                     if (existeFloristeria(floristeria)){
                         getFloristeriaMenu(floristeria).sumatoriaValorStock();
                     }
+                    break;
                 case 0 :
                     salir=true;
                     break;
@@ -118,56 +120,6 @@ public class AppMenu {
         }while (!salir);
     }
 
-    // SCANNERS --> falta añadir comprobacion o exception para que los valores ingresados sean los correctos
-    public static double ingresarDouble(String mensaje) {
-        Scanner input = new Scanner (System.in);
-        double numero=0.0;
-        boolean correcto = false;
-        do {
-            System.out.println(mensaje);
-            try{
-                numero = input.nextDouble();
-                correcto=true;
-            }catch (InputMismatchException ex){
-                System.out.println("Error de formato, mire que sean numeros separados por coma");
-            }
-            input.nextLine();
-        }while (!correcto);
-        return  numero;
-    }
-    public static int ingresarInt(String mensaje) {
-        Scanner input = new Scanner (System.in);
-        int numero= 0;
-        boolean correcto = false;
-        do {
-            System.out.println(mensaje);
-            try{
-                numero = input.nextInt();
-                correcto=true;
-            }catch (InputMismatchException ex){
-                System.out.println("Error de formato, mire que sean numeros ");
-            }
-            input.nextLine();
-        }while (!correcto);
-        return  numero;
-    }
-    public static String ingresarString(String mensaje) {
-        Scanner input = new Scanner (System.in);
-        String palabra= "";
-        boolean correcto = false;
-        do {
-            System.out.println(mensaje);
-            try{
-                palabra = input.nextLine();
-                correcto=true;
-            }catch (Exception ex){
-                System.out.println("Error de formato ");
-            }
-            input.nextLine();
-        }while (!correcto);
-
-        return  palabra;
-    }
 
     //MENSAJES
     public static void msjNoExiste(){

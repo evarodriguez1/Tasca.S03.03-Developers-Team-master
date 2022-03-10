@@ -10,9 +10,9 @@ public class StockDecoracion extends Stock{
     }
 
     public void crearArticulo() {
-        String nombre = ingresarString("Nombre Decoración:");
-        double precio = ingresarDouble("Ingrese el precio:");
-        String material = ingresarString("Ingrese el material:");
+        String nombre = teclado.ingresarString("Nombre Decoración:");
+        double precio = teclado.ingresarDouble("Ingrese el precio:");
+        String material = teclado.ingresarString("Ingrese el material:");
         dbDecoracion.add(new Decoracion (nombre,precio,material));
     }
 
