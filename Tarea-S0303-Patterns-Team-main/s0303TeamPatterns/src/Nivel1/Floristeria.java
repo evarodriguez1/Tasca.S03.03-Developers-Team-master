@@ -106,18 +106,21 @@ public class Floristeria {
                 switch (tipoArticulo.toLowerCase()) {
                     case "a":
                         t1.addArticuloAlTicket(floristeria.stockArbol.getArticulo(idArticulo, tipoArticulo));
-                        stockArbol.eliminarArticulo(idArticulo); //para sacar del stock lo vendido
                         ventas.add(floristeria.stockArbol.getArticulo(idArticulo, tipoArticulo));
+                        stockArbol.eliminarArticulo(idArticulo); //para sacar del stock lo vendido
+
                         break;
                     case "d":
                         t1.addArticuloAlTicket(floristeria.stockDecoracion.getArticulo(idArticulo, tipoArticulo));
-                        stockDecoracion.eliminarArticulo(idArticulo);
                         ventas.add(floristeria.stockDecoracion.getArticulo(idArticulo, tipoArticulo));
+                        stockDecoracion.eliminarArticulo(idArticulo);
+
                         break;
                     case "f":
                         t1.addArticuloAlTicket(floristeria.stockFlor.getArticulo(idArticulo, tipoArticulo));
-                        stockFlor.eliminarArticulo(idArticulo);
                         ventas.add(floristeria.stockFlor.getArticulo(idArticulo, tipoArticulo));
+                        stockFlor.eliminarArticulo(idArticulo);
+
                 }
                 indice = teclado.ingresarInt("Ingresa 1 para añadir un articulo, de lo contrario pulse 0.");
             }else{
@@ -133,8 +136,8 @@ public class Floristeria {
         for (int i=0; i<dbTickets.size();i++){
             System.out.println("ID Ticket: "+ dbTickets.get(i).getID());
             for(int j= 0; j<dbTickets.get(i).listaArticulos.size();j++){
-                System.out.println("ID Articulo: "+dbTickets.get(i).listaArticulos.get(j).tipo+dbTickets.get(i).listaArticulos.get(j).idArticulo+
-                        " / Nombre: "+dbTickets.get(i).listaArticulos.get(j).nombre+ " / Precio: €"+ dbTickets.get(i).listaArticulos.get(j).precio);
+                System.out.println("ID Articulo: "+ dbTickets.get(i).listaArticulos.get(j).getTipo()+dbTickets.get(i).listaArticulos.get(j).getID()+
+                        " / Nombre: "+dbTickets.get(i).listaArticulos.get(j).getNombre()+ " / Precio: €"+ dbTickets.get(i).listaArticulos.get(j).getPrecio());
             }
         }
     }
@@ -144,7 +147,7 @@ public class Floristeria {
     public void mostrarSumatorioVentas(){
         double valorTotalVentas=0;
         for(int i = 0; i<ventas.size(); i++){
-            valorTotalVentas+=ventas.get(i).precio;
+            valorTotalVentas+=ventas.get(i).getPrecio();
         }
         System.out.println("El valor total de las ventas es: €" +  valorTotalVentas);
     }

@@ -10,7 +10,7 @@ public class Articulo {
 
     //Sobrecarga de constructores
     public Articulo() {
-       tipo="";
+
     }
 
 

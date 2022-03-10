@@ -45,12 +45,5 @@ public class StockArbol extends Stock {
         }
         return valorTotalArboles;
     }
-    /*
-    public Arbol getArbol(int idArbol){
-        int i=0;
-        while (i<dbArbol.size()){
-            if(idArbol==dbArbol.)
-        }
-    }
-*/
+
 }

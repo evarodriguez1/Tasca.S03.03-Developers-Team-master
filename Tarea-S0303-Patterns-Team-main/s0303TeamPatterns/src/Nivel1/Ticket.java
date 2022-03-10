@@ -2,12 +2,11 @@ package Nivel1;
 
 import java.util.ArrayList;
 //nos falta una clase de ventas
-public class Ticket extends Ventas {
+public class Ticket {
 
     public ArrayList<Articulo> listaArticulos= new ArrayList<Articulo>();
     private static int id = 0;
     private  int idTicket;
-    private static Ventas ventas = new Ventas();
 
     Ticket(){
 
@@ -23,7 +22,7 @@ public class Ticket extends Ventas {
     public void addArticuloAlTicket (Articulo articulo){
 
         listaArticulos.add(articulo);
-        //ventas.Ventas.add(articulo);
+
     }
 
     public void mostrarCompra(){
@@ -41,7 +40,7 @@ public class Ticket extends Ventas {
         return idTicket;
     }
     public void imprimirTicket(){
-        listaArticulos.forEach(x->System.out.println("ID: D"+x.getID()+" / Nombre: "+x.getNombre()+" / Precio: €"+x.getPrecio()));
+        listaArticulos.forEach(x->System.out.println("ID: "+x.getTipo()+x.getID()+" / Nombre: "+x.getNombre()+" / Precio: €"+x.getPrecio()));
     }
 
 }
