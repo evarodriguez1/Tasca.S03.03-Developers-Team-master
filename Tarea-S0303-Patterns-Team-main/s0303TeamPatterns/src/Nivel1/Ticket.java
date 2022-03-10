@@ -7,6 +7,7 @@ public class Ticket {
     public ArrayList<Articulo> listaArticulos= new ArrayList<Articulo>();
     private static int id = 0;
     private  int idTicket;
+    private static Ventas ventas = new Ventas();
 
     Ticket(){
 
@@ -22,6 +23,7 @@ public class Ticket {
     public void addArticuloAlTicket (Articulo articulo){
 
         listaArticulos.add(articulo);
+        ventas.listaVentas.add(articulo);
     }
 
     public void mostrarCompra(){

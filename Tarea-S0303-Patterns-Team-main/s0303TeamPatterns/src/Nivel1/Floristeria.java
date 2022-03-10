@@ -127,7 +127,13 @@ public class Floristeria {
     }
 
     public void mostrarTickets (){
-        System.out.println(dbTickets);
+        for (int i=0; i<dbTickets.size();i++){
+            System.out.println("ID Ticket: "+ dbTickets.get(i).getID());
+            for(int j= 0; j<dbTickets.get(i).listaArticulos.size();j++){
+                System.out.println("ID Articulo: "+dbTickets.get(i).listaArticulos.get(j).tipo+dbTickets.get(i).listaArticulos.get(j).idArticulo+
+                        " / Nombre: "+dbTickets.get(i).listaArticulos.get(j).nombre+ " / Precio: €"+ dbTickets.get(i).listaArticulos.get(j).precio);
+            }
+        }
     }
 
 
