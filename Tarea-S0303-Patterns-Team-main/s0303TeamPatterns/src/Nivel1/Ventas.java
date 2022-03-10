@@ -3,12 +3,15 @@ package Nivel1;
 import java.util.ArrayList;
 
 public class Ventas {
-    public ArrayList<Articulo> listaVentas = new ArrayList<Articulo>();
+    public ArrayList<Articulo> Ventas = new ArrayList<Articulo>();
 
-    public void mostrarSumatorioVentas(){
+
+    public double mostrarSumatorioVentas(){
         double valorTotalVentas=0;
-        for(int i = 0; i<listaVentas.size(); i++){
-            valorTotalVentas+=listaVentas.get(i).precio;
+        for(int i = 0; i<Ventas.size(); i++){
+            valorTotalVentas+=Ventas.get(i).precio;
         }
+        return valorTotalVentas;
     }
+
 }

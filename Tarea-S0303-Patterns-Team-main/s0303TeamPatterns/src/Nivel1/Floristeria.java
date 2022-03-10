@@ -14,6 +14,7 @@ public class Floristeria {
     private Stock stockDecoracion;
     private Stock stockFlor;
     private ArrayList<Ticket> dbTickets;
+    public ArrayList<Articulo> ventas = new ArrayList<Articulo>();
     private Teclado teclado= new Teclado();
 
 
@@ -106,15 +107,17 @@ public class Floristeria {
                     case "a":
                         t1.addArticuloAlTicket(floristeria.stockArbol.getArticulo(idArticulo, tipoArticulo));
                         stockArbol.eliminarArticulo(idArticulo); //para sacar del stock lo vendido
-
+                        ventas.add(floristeria.stockArbol.getArticulo(idArticulo, tipoArticulo));
                         break;
                     case "d":
                         t1.addArticuloAlTicket(floristeria.stockDecoracion.getArticulo(idArticulo, tipoArticulo));
                         stockDecoracion.eliminarArticulo(idArticulo);
+                        ventas.add(floristeria.stockDecoracion.getArticulo(idArticulo, tipoArticulo));
                         break;
                     case "f":
                         t1.addArticuloAlTicket(floristeria.stockFlor.getArticulo(idArticulo, tipoArticulo));
                         stockFlor.eliminarArticulo(idArticulo);
+                        ventas.add(floristeria.stockFlor.getArticulo(idArticulo, tipoArticulo));
                 }
                 indice = teclado.ingresarInt("Ingresa 1 para añadir un articulo, de lo contrario pulse 0.");
             }else{
@@ -134,6 +137,16 @@ public class Floristeria {
                         " / Nombre: "+dbTickets.get(i).listaArticulos.get(j).nombre+ " / Precio: €"+ dbTickets.get(i).listaArticulos.get(j).precio);
             }
         }
+    }
+
+
+
+    public void mostrarSumatorioVentas(){
+        double valorTotalVentas=0;
+        for(int i = 0; i<ventas.size(); i++){
+            valorTotalVentas+=ventas.get(i).precio;
+        }
+        System.out.println("El valor total de las ventas es: €" +  valorTotalVentas);
     }
 
 

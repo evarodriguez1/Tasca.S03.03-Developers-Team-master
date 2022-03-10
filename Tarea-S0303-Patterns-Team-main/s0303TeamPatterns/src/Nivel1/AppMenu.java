@@ -21,6 +21,7 @@ public class AppMenu {
             System.out.println("6. crear ticket y mostrarlo.");
             System.out.println("7. mostrar todos los tickets.");
             System.out.println("8. Valor total de los Stocks actual.");
+            System.out.println("9. Valor total de las ventas");
 
             System.out.println("0. Salir de la aplicación.\n");
 
@@ -108,6 +109,12 @@ public class AppMenu {
                     floristeria = teclado.ingresarString("En que floristeria quieres realizar la acción?");
                     if (existeFloristeria(floristeria)){
                         getFloristeriaMenu(floristeria).sumatoriaValorStock();
+                    }
+                    break;
+                case 9 :
+                    floristeria = teclado.ingresarString("En que floristeria quieres realizar la acción?");
+                    if (existeFloristeria(floristeria)){
+                        getFloristeriaMenu(floristeria).mostrarSumatorioVentas();
                     }
                     break;
                 case 0 :

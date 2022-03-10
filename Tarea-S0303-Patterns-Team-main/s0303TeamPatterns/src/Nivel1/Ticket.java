@@ -2,7 +2,7 @@ package Nivel1;
 
 import java.util.ArrayList;
 //nos falta una clase de ventas
-public class Ticket {
+public class Ticket extends Ventas {
 
     public ArrayList<Articulo> listaArticulos= new ArrayList<Articulo>();
     private static int id = 0;
@@ -23,7 +23,7 @@ public class Ticket {
     public void addArticuloAlTicket (Articulo articulo){
 
         listaArticulos.add(articulo);
-        ventas.listaVentas.add(articulo);
+        //ventas.Ventas.add(articulo);
     }
 
     public void mostrarCompra(){
