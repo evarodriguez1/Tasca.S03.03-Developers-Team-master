@@ -1,12 +1,12 @@
 package Nivel1;
 
 public class Decoracion extends Articulo{
-	
+
+    //atributos
 	private static int id = 0;
-
     private String material;
-    //private static final String tipo = "D";
 
+    //contructor
     public Decoracion(String nombre, double precio, String material) {
         this.nombre = nombre;
         this.precio = precio;
@@ -15,7 +15,7 @@ public class Decoracion extends Articulo{
         tipo = "D";
     }
 
-
+    //getters
     public String getMaterial() {
         return material;
     }

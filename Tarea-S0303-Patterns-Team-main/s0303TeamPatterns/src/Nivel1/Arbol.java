@@ -2,11 +2,11 @@ package Nivel1;
 
 public class Arbol extends Articulo{
 
+    //atributos
     private static int id = 0;
-
     private double altura;
-    //private static final String tipo = "A";
 
+    //contructor
     public Arbol(String nombre, double precio, double altura) {
         this.nombre = nombre;
         this.precio = precio;
@@ -15,6 +15,7 @@ public class Arbol extends Articulo{
         tipo= "A";
     }
 
+    //getters
     public double getAltura() {
         return altura;
     }
