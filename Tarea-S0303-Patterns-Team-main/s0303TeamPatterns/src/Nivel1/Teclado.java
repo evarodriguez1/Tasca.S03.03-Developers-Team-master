@@ -16,8 +16,9 @@ public class Teclado {
                 correcto=true;
             }catch (InputMismatchException ex){
                 System.out.println("Error de formato, mire que sean numeros separados por coma");
+                input.nextLine();
             }
-            input.nextLine();
+
         }while (!correcto);
         return  numero;
     }
@@ -32,8 +33,9 @@ public class Teclado {
                 correcto=true;
             }catch (InputMismatchException ex){
                 System.out.println("Error de formato, mire que sean numeros ");
+                input.nextLine();
             }
-            input.nextLine();
+
         }while (!correcto);
         return  numero;
     }
@@ -48,11 +50,12 @@ public class Teclado {
                 correcto=true;
             }catch (Exception ex){
                 System.out.println("Error de formato ");
+                input.nextLine();
             }
-            input.nextLine();
+
         }while (!correcto);
 
-        return  palabra;
+        return palabra;
     }
 
 }
