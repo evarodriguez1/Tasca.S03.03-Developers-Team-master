@@ -30,7 +30,7 @@ public class StockFlor extends Stock{
     }
 
     public void imprimirStock() {
-        dbFlor.forEach(x->System.out.println("ID: F"+x.getID()+" / Nombre: "+x.getNombre()+" / "+x.getPrecio()+" / "+x.getColor()));
+        dbFlor.forEach(x->System.out.println("ID: F"+x.getID()+" / Nombre: "+x.getNombre()+" / Precio: €"+x.getPrecio()+" / Color: "+x.getColor()));
     }
 
     public void mostrarCantidadStock() {

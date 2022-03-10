@@ -38,8 +38,8 @@ public class Ticket {
     public int getIdTicket() {
         return idTicket;
     }
-    public String toString(){
-        return listaArticulos.toString();
+    public void imprimirTicket(){
+        listaArticulos.forEach(x->System.out.println("ID: D"+x.getID()+" / Nombre: "+x.getNombre()+" / Precio: €"+x.getPrecio()));
     }
 
 }

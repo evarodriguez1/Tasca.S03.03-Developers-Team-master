@@ -29,7 +29,7 @@ public class StockDecoracion extends Stock{
     }
 
     public void imprimirStock() {
-        dbDecoracion.forEach(x->System.out.println("ID: D"+x.getID()+" / Nombre: "+x.getNombre()+" / "+x.getPrecio()+" / "+x.getMaterial()));
+        dbDecoracion.forEach(x->System.out.println("ID: D"+x.getID()+" / Nombre: "+x.getNombre()+" / Precio: €"+x.getPrecio()+" / Material: "+x.getMaterial()));
     }
 
     public void mostrarCantidadStock() {

@@ -20,7 +20,7 @@ public class AppMenu {
             System.out.println("5. imprimir cantidades stock.");
             System.out.println("6. crear ticket y mostrarlo.");
             System.out.println("7. mostrar todos los tickets.");
-            System.out.println("8. Ventas totales.");
+            System.out.println("8. Valor total de los Stocks actual.");
 
             System.out.println("0. Salir de la aplicación.\n");
 

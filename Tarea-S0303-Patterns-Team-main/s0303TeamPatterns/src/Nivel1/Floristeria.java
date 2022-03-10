@@ -119,10 +119,11 @@ public class Floristeria {
                 indice = teclado.ingresarInt("Ingresa 1 para añadir un articulo, de lo contrario pulse 0.");
             }else{
                 System.out.println("El articulo no existe en nuestra base de datos");
+                indice = teclado.ingresarInt("Ingresa 1 para añadir un articulo, de lo contrario pulse 0.");
             }
 
         }
-        System.out.println(t1.toString());
+        t1.imprimirTicket();
     }
 
     public void mostrarTickets (){
