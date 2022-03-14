@@ -2,7 +2,7 @@ package Nivel1;
 
 import java.util.ArrayList;
 
-public class Floristeria {
+public class Floristeria implements IFloristeria {
 
     //atributos
     private String nombre;

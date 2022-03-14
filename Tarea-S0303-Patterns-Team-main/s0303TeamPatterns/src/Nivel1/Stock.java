@@ -1,6 +1,6 @@
 package Nivel1;
 
-import org.jetbrains.annotations.NotNull;
+
 
 import java.util.ArrayList;
 
@@ -18,7 +18,7 @@ public class Stock {
     }
 
     //getter
-    public Articulo getArticulo (int idArticulo, @NotNull String tipo){
+    public Articulo getArticulo (int idArticulo, String tipo){
         Articulo articulo = null;
 
         switch (tipo.toLowerCase()){
