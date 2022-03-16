@@ -18,26 +18,23 @@ public class ConnectionDB_SQL {
             Statement myStatement = myConnection.createStatement();
             System.out.println("Connectado con éxito");
 
-            String instruccionTable = "CREATE TABLE Floristeria (nombre VARCHAR(20)) ";
-            String instruccionSql1 = "INSERT INTO floristeria (NOMBRE) VALUES ('La Flor')";
-
-            String instruccionSql = "INSERT INTO ARTICULO (IDARTICULO, NOMBRE, PRECIO) VALUES ('A1','pino','3.9')";
+            String instruccionSql1 = "SELECT * FROM Floristeria ";
+            String instruccionSql2 = "SELECT * FROM arboles";
 
 
             myStatement.execute(instruccionSql1);
-            System.out.println("Datos inseridos correctamente");
-
-
-/*
 
             //ejecutar la instruccion sql
-            //ResultSet myResulSet = myStatement.executeQuery();  ---> aqui dentro va la query SELECT * FROM ARTICULO
+            ResultSet myResulSet = myStatement.executeQuery(instruccionSql2);  //---> aqui dentro va la query SELECT * FROM ARTICULO
+
             //recorrer el resulset
-            while(myResultSet.next()) {
-                System.out.println(myResultSet.getString("NOMBREARTICULO")); ---> NOMBRE DE LA COLUMNA QUE QUIERAS IMPRIMIR, se puede concatenar
+            while(myResulSet.next()) {
+                System.out.println(myResulSet.getString("Nombre") + " "
+                        +myResulSet.getString("Precio") + "€ " +myResulSet.getString("Altura")+ " mts" );
+                //---> NOMBRE DE LA COLUMNA QUE QUIERAS IMPRIMIR, se puede concatenar
         }
 
- */
+
         }catch (Exception e) {
 
             System.out.println("No se puede conectar al servidor.");
