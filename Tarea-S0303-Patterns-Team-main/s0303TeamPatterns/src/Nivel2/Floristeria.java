@@ -1,5 +1,9 @@
 package Nivel2;
 
+import Nivel2.conectaBD_SQL.ConnectionDB_SQL;
+
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Floristeria implements IFloristeria {
@@ -11,6 +15,9 @@ public class Floristeria implements IFloristeria {
     private Stock stockFlor;
     private ArrayList<Ticket> dbTickets;
     public ArrayList<Articulo> ventas;
+    private static ConnectionDB_SQL conexion = new ConnectionDB_SQL();
+    private static Connection cn = conexion.conectar();
+
 
     //instanciamos la clase teclado
     private Teclado teclado= new Teclado();
@@ -82,7 +89,7 @@ public class Floristeria implements IFloristeria {
         dbTickets.add(t1);
         return t1;
     }
-    public void addArtiuclosTicket (Floristeria floristeria){
+    public void addArtiuclosTicket (Floristeria floristeria) throws SQLException {
         int opcionIngresada = teclado.ingresarInt("Ingresa 1 para añadir un artículo, de lo contrario pulse 0.");
         Ticket t1 = crearTicket();
         int idArticulo;

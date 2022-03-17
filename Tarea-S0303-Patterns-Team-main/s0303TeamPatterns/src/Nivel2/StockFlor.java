@@ -1,5 +1,9 @@
 package Nivel2;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 public class StockFlor extends Stock {
 
     //contructor vacio
@@ -13,6 +17,20 @@ public class StockFlor extends Stock {
         double precio = teclado.ingresarDouble("Ingrese el precio:");
         String color = teclado.ingresarString("Ingrese el color:");
         dbFlor.add(new Flor(nombre,precio,color));
+        try {
+            Statement st = cn.createStatement();
+            PreparedStatement miSentencia = cn.prepareStatement("INSERT INTO flores (tipo, idArticulo,nombre, precio, color) VALUES(?,?,?,?,?)");
+            miSentencia.setString(1, "F");
+            miSentencia.setString(2, null);
+            miSentencia.setString(3, nombre);
+            miSentencia.setString(4, String.valueOf(precio));
+            miSentencia.setString(5, color);
+
+            miSentencia.executeUpdate();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
     }
     public void eliminarArticulo(int idArticulo) {
         int i = 0;
@@ -22,6 +40,17 @@ public class StockFlor extends Stock {
             } else {
                 i++;
             }
+        }
+        try {
+            PreparedStatement miSentencia = cn.prepareStatement("DELETE FROM flores  WHERE idArticulo=? ");
+
+            miSentencia.setInt(1, idArticulo);
+
+            miSentencia.executeUpdate();
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
         }
     }
 

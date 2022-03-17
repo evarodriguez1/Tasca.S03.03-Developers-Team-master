@@ -1,12 +1,18 @@
 package Nivel2;
 
+import Nivel2.conectaBD_SQL.ConnectionDB_SQL;
+
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class AppMenu {
 
     //instanciamos la bd de floristerias y la clase teclado
     private static ArrayList<Floristeria> dbFloristerias = new ArrayList <Floristeria> ();
     Teclado teclado = new Teclado();
+    private static ConnectionDB_SQL conexion = new ConnectionDB_SQL();
+    private static Connection cn = conexion.conectar();
 
     //metodos de menu
     public int mostrarMenu() {
@@ -29,7 +35,7 @@ public class AppMenu {
 
         return opcionElegida;
     }
-    public void realizarOpcionMenu() {
+    public void realizarOpcionMenu() throws SQLException {
         boolean salir = false;
         String floristeria = "";
         String tipoArticulo;
@@ -39,6 +45,18 @@ public class AppMenu {
                     //crear floristeria
                     String nombre = teclado.ingresarString("Cuál es el nombre de la floristería:");
                     crearFloristeria(nombre);
+                    try {
+                        Statement st = cn.createStatement();
+                        PreparedStatement miSentencia = cn.prepareStatement("INSERT INTO floristeria (idFloristeria,nombre) VALUES(?,?)");
+                        miSentencia.setString(1, null);
+                        miSentencia.setString(2, nombre);
+
+                        miSentencia.executeUpdate();
+
+                    }catch (SQLException e){
+                        e.printStackTrace();
+                    }
+
                     break;
                 case 2:
                     //crear artículo y añadirlo al stock
@@ -48,6 +66,7 @@ public class AppMenu {
                        if (tipoLetra(tipoArticulo)){ //comprueba que la letra ingresada es correcta
                            getFloristeriaMenu(floristeria).getStock(tipoArticulo).crearArticulo(); //crea y añade al stock un articulo
                            msjArticuloCreado();
+
                        }else{
                            msjLetraErronea();
                        }

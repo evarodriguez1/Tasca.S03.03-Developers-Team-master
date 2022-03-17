@@ -2,6 +2,10 @@ package Nivel2;
 
 
 
+import Nivel2.conectaBD_SQL.ConnectionDB_SQL;
+
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Stock {
@@ -11,6 +15,8 @@ public class Stock {
     protected ArrayList<Flor> dbFlor= new  ArrayList<Flor>();
     protected ArrayList<Decoracion> dbDecoracion = new ArrayList<Decoracion>();
     protected Teclado teclado = new Teclado();
+    private static ConnectionDB_SQL conexion = new ConnectionDB_SQL();
+    protected static Connection cn = conexion.conectar();
 
     //contructor vacio
     public Stock (){
@@ -26,6 +32,7 @@ public class Stock {
                 for (int i = 0; i < dbArbol.size(); i++){
                     if(dbArbol.get(i).getID() == idArticulo);
                     articulo = dbArbol.get(i);
+
                 }
                 break;
             case "d":
@@ -45,9 +52,9 @@ public class Stock {
     }
 
     //metodos de articulo
-    public void crearArticulo(){
+    public void crearArticulo() throws SQLException {
     }
-    public void eliminarArticulo(int idArticulo){
+    public void eliminarArticulo(int idArticulo) throws SQLException{
     }
 
     //metodos de stock

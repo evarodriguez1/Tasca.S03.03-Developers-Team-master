@@ -1,20 +1,23 @@
 package Nivel2.conectaBD_SQL;
 
 import java.sql.*;
+
 public class ConnectionDB_SQL {
-    public static void main(String[]args) {
+
 
         final String CONTROLADOR = "com.mysql.cj.jdbc.Driver";
         final String URL = "jdbc:mysql://localhost:3306/floristeria";
         final String USUARIO = "root";
         final String CLAVE = "Sg7535sg";
 
-        try {
-            //crear conexion
-            Connection myConnection = DriverManager.getConnection(URL, USUARIO, CLAVE);
-            System.out.println("Connectando.....");
+        public Connection conectar () {
+            Connection myConnection = null;
+            try {
+                //crear conexion
+                myConnection = DriverManager.getConnection(URL, USUARIO, CLAVE);
+                System.out.println("Connectando.....");
 
-            //crear objeto statment
+        /*    //crear objeto statment
             Statement myStatement = myConnection.createStatement();
             System.out.println("Connectado con éxito");
 
@@ -32,13 +35,17 @@ public class ConnectionDB_SQL {
                 System.out.println(myResulSet.getString("Nombre") + " "
                         +myResulSet.getString("Precio") + "€ " +myResulSet.getString("Altura")+ " mts" );
                 //---> NOMBRE DE LA COLUMNA QUE QUIERAS IMPRIMIR, se puede concatenar
+
+
+        }*/
+
+
+            } catch (Exception e) {
+
+                System.out.println("No se puede conectar al servidor.");
+                e.printStackTrace();
+            }
+            return myConnection;
         }
 
-
-        }catch (Exception e) {
-
-            System.out.println("No se puede conectar al servidor.");
-            e.printStackTrace();
-        }
-    }
 }
