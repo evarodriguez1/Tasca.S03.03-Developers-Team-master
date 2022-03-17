@@ -20,13 +20,21 @@ public class StockFlor extends Stock {
         try {
             Statement st = cn.createStatement();
             PreparedStatement miSentencia = cn.prepareStatement("INSERT INTO flores (tipo, idArticulo,nombre, precio, color) VALUES(?,?,?,?,?)");
+            PreparedStatement miSentencia2 = cn.prepareStatement("INSERT INTO articulos (tipo, idArticulo,nombre, precio) VALUES(?,?,?,?)");
             miSentencia.setString(1, "F");
             miSentencia.setString(2, null);
             miSentencia.setString(3, nombre);
             miSentencia.setString(4, String.valueOf(precio));
             miSentencia.setString(5, color);
 
+            miSentencia2.setString(1, "F");
+            miSentencia2.setString(2, null);
+            miSentencia2.setString(3, nombre);
+            miSentencia2.setString(4, String.valueOf(precio));
+
+
             miSentencia.executeUpdate();
+            miSentencia2.executeUpdate();
 
         }catch (SQLException e){
             e.printStackTrace();

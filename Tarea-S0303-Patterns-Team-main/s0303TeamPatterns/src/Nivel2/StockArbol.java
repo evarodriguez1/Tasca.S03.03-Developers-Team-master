@@ -18,13 +18,21 @@ public class StockArbol extends Stock {
         dbArbol.add(new Arbol(nombre, precio, altura)); //inyeccion de  dependencia
         try {
             Statement st = cn.createStatement();
-            PreparedStatement miSentencia = cn.prepareStatement("INSERT INTO alboles (tipo, idArbol,nombre, precio, altura) VALUES(?,?,?,?,?)");
+            PreparedStatement miSentencia = cn.prepareStatement("INSERT INTO arboles (tipo, idArticulo,nombre, precio, altura) VALUES(?,?,?,?,?)");
+            PreparedStatement miSentencia2 = cn.prepareStatement("INSERT INTO articulos (tipo, idArticulo,nombre, precio) VALUES(?,?,?,?)");
+
             miSentencia.setString(1, "A");
             miSentencia.setString(2, null);
             miSentencia.setString(3, nombre);
             miSentencia.setString(4, String.valueOf(precio));
             miSentencia.setString(5, String.valueOf(altura));
 
+            miSentencia2.setString(1, "A");
+            miSentencia2.setString(2, null);
+            miSentencia2.setString(3, nombre);
+            miSentencia2.setString(4, String.valueOf(precio));
+
+            miSentencia2.executeUpdate();
             miSentencia.executeUpdate();
 
         }catch (SQLException e){

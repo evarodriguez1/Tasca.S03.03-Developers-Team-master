@@ -3,7 +3,9 @@ package Nivel2;
 import Nivel2.conectaBD_SQL.ConnectionDB_SQL;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class Floristeria implements IFloristeria {
@@ -103,17 +105,70 @@ public class Floristeria implements IFloristeria {
                     case "a":
                         t1.addArticuloAlTicket(floristeria.stockArbol.getArticulo(idArticulo, tipoArticulo));
                         ventas.add(floristeria.stockArbol.getArticulo(idArticulo, tipoArticulo));
-                        stockArbol.eliminarArticulo(idArticulo); //para sacar del stock lo vendido
+
+                        try {
+                            Statement st = cn.createStatement();
+                            PreparedStatement miSentencia = cn.prepareStatement("INSERT INTO ventas (idTicket, tipoArticulo, idArticulo, nombreArticulo,precioArticulo)" +
+                                    " VALUES(?,?,?,?,?)");
+                            miSentencia.setString(1, null);
+                            miSentencia.setString(2, "A");
+                            miSentencia.setString(3, String.valueOf(idArticulo));
+                            miSentencia.setString(4, stockArbol.getArticulo(idArticulo, tipoArticulo).getNombre());
+                            miSentencia.setString(5,String.valueOf(stockArbol.getArticulo(idArticulo, tipoArticulo).getPrecio()));
+
+                            miSentencia.executeUpdate();
+
+                            stockArbol.eliminarArticulo(idArticulo); //para sacar del stock lo vendido
+
+                        }catch (SQLException e){
+                            e.printStackTrace();
+                        }
+
                         break;
                     case "d":
                         t1.addArticuloAlTicket(floristeria.stockDecoracion.getArticulo(idArticulo, tipoArticulo));
                         ventas.add(floristeria.stockDecoracion.getArticulo(idArticulo, tipoArticulo));
-                        stockDecoracion.eliminarArticulo(idArticulo);
+
+                        try {
+                            Statement st = cn.createStatement();
+                            PreparedStatement miSentencia = cn.prepareStatement("INSERT INTO ventas (idTicket, tipoArticulo, idArticulo, nombreArticulo,precioArticulo)" +
+                                    " VALUES(?,?,?,?,?)");
+                            miSentencia.setString(1, null);
+                            miSentencia.setString(2, "D");
+                            miSentencia.setString(3, String.valueOf(idArticulo));
+                            miSentencia.setString(4, stockDecoracion.getArticulo(idArticulo, tipoArticulo).getNombre());
+                            miSentencia.setString(5, String.valueOf(stockDecoracion.getArticulo(idArticulo, tipoArticulo).getPrecio()));
+
+                            miSentencia.executeUpdate();
+
+                            stockDecoracion.eliminarArticulo(idArticulo);
+
+                        }catch (SQLException e){
+                            e.printStackTrace();
+                        }
                         break;
                     case "f":
                         t1.addArticuloAlTicket(floristeria.stockFlor.getArticulo(idArticulo, tipoArticulo));
                         ventas.add(floristeria.stockFlor.getArticulo(idArticulo, tipoArticulo));
-                        stockFlor.eliminarArticulo(idArticulo);
+
+                        try {
+                            Statement st = cn.createStatement();
+                            PreparedStatement miSentencia = cn.prepareStatement("INSERT INTO ventas (idTicket, tipoArticulo, idArticulo, nombreArticulo,precioArticulo)" +
+                                    " VALUES(?,?,?,?,?)");
+                            miSentencia.setString(1, null);
+                            miSentencia.setString(2, "F");
+                            miSentencia.setString(3, String.valueOf(idArticulo));
+                            miSentencia.setString(4, stockFlor.getArticulo(idArticulo, tipoArticulo).getNombre());
+                            miSentencia.setString(5, String.valueOf(stockFlor.getArticulo(idArticulo, tipoArticulo).getPrecio()));
+
+                            miSentencia.executeUpdate();
+
+                            stockFlor.eliminarArticulo(idArticulo);
+
+                        }catch (SQLException e){
+                            e.printStackTrace();
+                        }
+
                         break;
                 }
                 opcionIngresada = teclado.ingresarInt("Ingresa 1 para añadir un articulo, de lo contrario pulse 0.");

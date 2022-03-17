@@ -104,7 +104,7 @@ public class AppMenu {
                     }
                     break;
                 case 6 :
-                    //crear ticket y mostrarlo
+                    //crear ticket y mostrarlo --> es una venta
                     floristeria = teclado.ingresarString("En que floristería quieres realizar la acción?");
                     Floristeria floristeria1;
                     if (existeFloristeria(floristeria)){

@@ -3,7 +3,7 @@ package Nivel2;
 public class Flor extends Articulo {
 
     //atributos
-    private static int id = 0;
+    private static int id = 1;
     private String color;
 
     //contructor

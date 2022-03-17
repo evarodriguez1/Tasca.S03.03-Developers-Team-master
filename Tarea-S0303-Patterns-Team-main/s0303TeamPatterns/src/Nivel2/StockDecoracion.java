@@ -18,13 +18,20 @@ public class StockDecoracion extends Stock {
         dbDecoracion.add(new Decoracion(nombre,precio,material));
         try {
             Statement st = cn.createStatement();
-            PreparedStatement miSentencia = cn.prepareStatement("INSERT INTO decoracion (tipo, idArbol, nombre, precio, material) VALUES(?,?,?,?,?)");
+            PreparedStatement miSentencia = cn.prepareStatement("INSERT INTO decoracion (tipo, idArticulo, nombre, precio, material) VALUES(?,?,?,?,?)");
+            PreparedStatement miSentencia2 = cn.prepareStatement("INSERT INTO articulos (tipo, idArticulo,nombre, precio) VALUES(?,?,?,?)");
             miSentencia.setString(1, "D");
             miSentencia.setString(2, null);
             miSentencia.setString(3, nombre);
             miSentencia.setString(4, String.valueOf(precio));
             miSentencia.setString(5, material);
 
+            miSentencia2.setString(1, "D");
+            miSentencia2.setString(2, null);
+            miSentencia2.setString(3, nombre);
+            miSentencia2.setString(4, String.valueOf(precio));
+
+            miSentencia2.executeUpdate();
             miSentencia.executeUpdate();
 
         }catch (SQLException e){
