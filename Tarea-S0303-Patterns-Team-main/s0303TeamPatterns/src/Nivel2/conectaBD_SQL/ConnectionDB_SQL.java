@@ -23,17 +23,4 @@ public class ConnectionDB_SQL {
             }
             return myConnection;
         }
-
-        /*
-            AppMenu appMenu = new AppMenu();
-
-            appMenu.realizarOpcionMenu();
-            //ejecutar la instruccion sql
-            //ResultSet myResulSet = myStatement.executeQuery();  ---> aqui dentro va la query SELECT * FROM ARTICULO
-            //recorrer el resulset
-            while(myResultSet.next()) {
-                System.out.println(myResultSet.getString("NOMBREARTICULO")); ---> NOMBRE DE LA COLUMNA QUE QUIERAS IMPRIMIR, se puede concatenar
-        }
-
- */
 }
