@@ -17,6 +17,7 @@ public class StockDecoracion extends Stock {
         String material = teclado.ingresarString("Ingrese el material:");
         dbDecoracion.add(new Decoracion(nombre,precio,material));
         try {
+            //declaracion y ejecucion de instrucciones sql para crear el articulo decoracion y subirlo al BD
             Statement st = cn.createStatement();
             PreparedStatement miSentencia = cn.prepareStatement("INSERT INTO decoracion (tipo, idArticulo, nombre, precio, material) VALUES(?,?,?,?,?)");
             PreparedStatement miSentencia2 = cn.prepareStatement("INSERT INTO articulos (tipo, idArticulo,nombre, precio) VALUES(?,?,?,?)");
@@ -49,6 +50,7 @@ public class StockDecoracion extends Stock {
             }
 
         }
+        //declaracion y ejecucion de instrucciones sql para eliminar el articulo decoracion y sacarlo de la BD
         try {
             PreparedStatement miSentencia = cn.prepareStatement("DELETE FROM decoracion  WHERE idArticulo=? ");
 

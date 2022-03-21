@@ -15,6 +15,7 @@ public class Ticket {
     private  int idTicket;
     //instancia de la lista de articulos
     public ArrayList<Articulo> listaArticulos = new ArrayList<Articulo>();
+    //conectamos a la base de datos
     private static ConnectionDB_SQL conexion = new ConnectionDB_SQL();
     private static Connection cn = conexion.conectar();
 

@@ -17,6 +17,8 @@ public class Floristeria implements IFloristeria {
     private Stock stockFlor;
     private ArrayList<Ticket> dbTickets;
     public ArrayList<Articulo> ventas;
+
+    //instanciamos conexion
     private static ConnectionDB_SQL conexion = new ConnectionDB_SQL();
     private static Connection cn = conexion.conectar();
 

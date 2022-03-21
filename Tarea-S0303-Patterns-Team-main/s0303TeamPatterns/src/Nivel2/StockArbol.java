@@ -17,6 +17,7 @@ public class StockArbol extends Stock {
         double altura = teclado.ingresarDouble("Ingrese la altura:");
         dbArbol.add(new Arbol(nombre, precio, altura)); //inyeccion de  dependencia
         try {
+            //declaracion y ejecucion de instrucciones sql para crear el articulo arbol y subirlo al BD
             Statement st = cn.createStatement();
             PreparedStatement miSentencia = cn.prepareStatement("INSERT INTO arboles (tipo, idArticulo,nombre, precio, altura) VALUES(?,?,?,?,?)");
             PreparedStatement miSentencia2 = cn.prepareStatement("INSERT INTO articulos (tipo, idArticulo,nombre, precio) VALUES(?,?,?,?)");
@@ -49,6 +50,7 @@ public class StockArbol extends Stock {
                 i++;
             }
         }
+        //declaracion y ejecucion de instrucciones sql para eliminar el articulo arbol y sacarlo de la BD
         try {
             PreparedStatement miSentencia = cn.prepareStatement("DELETE FROM arboles WHERE idArticulo=? ");
 

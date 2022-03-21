@@ -10,11 +10,13 @@ import java.util.ArrayList;
 
 public class Stock {
 
-    //intanciamos cada bd y la clase teclado
+    //intanciamos cada bd y teclado
     protected ArrayList<Arbol> dbArbol = new ArrayList<Arbol>();
     protected ArrayList<Flor> dbFlor= new  ArrayList<Flor>();
     protected ArrayList<Decoracion> dbDecoracion = new ArrayList<Decoracion>();
     protected Teclado teclado = new Teclado();
+
+    //instanciamos conexion sql
     private static ConnectionDB_SQL conexion = new ConnectionDB_SQL();
     protected static Connection cn = conexion.conectar();
 

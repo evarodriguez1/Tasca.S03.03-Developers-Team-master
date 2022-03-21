@@ -17,6 +17,7 @@ public class StockFlor extends Stock {
         double precio = teclado.ingresarDouble("Ingrese el precio:");
         String color = teclado.ingresarString("Ingrese el color:");
         dbFlor.add(new Flor(nombre,precio,color));
+        //declaracion y ejecucion de instrucciones sql para crear el articulo flor y subirlo al BD
         try {
             Statement st = cn.createStatement();
             PreparedStatement miSentencia = cn.prepareStatement("INSERT INTO flores (tipo, idArticulo,nombre, precio, color) VALUES(?,?,?,?,?)");
@@ -49,6 +50,7 @@ public class StockFlor extends Stock {
                 i++;
             }
         }
+        //declaracion y ejecucion de instrucciones sql para eliminar el articulo flor y sacarlo de la BD
         try {
             PreparedStatement miSentencia = cn.prepareStatement("DELETE FROM flores  WHERE idArticulo=? ");
 

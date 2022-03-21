@@ -8,9 +8,10 @@ import java.util.Locale;
 
 public class AppMenu {
 
-    //instanciamos la bd de floristerias y la clase teclado
+    //instanciamos el arraylist bd de floristerias y teclado
     private static ArrayList<Floristeria> dbFloristerias = new ArrayList <Floristeria> ();
     Teclado teclado = new Teclado();
+    //instanciamos conexion SQL
     private static ConnectionDB_SQL conexion = new ConnectionDB_SQL();
     private static Connection cn = conexion.conectar();
 
@@ -45,6 +46,7 @@ public class AppMenu {
                     //crear floristeria
                     String nombre = teclado.ingresarString("Cuál es el nombre de la floristería:");
                     crearFloristeria(nombre);
+                    //declaracion y ejecucion de instrucciones sql para crearla floristeria y subirla a BD
                     try {
                         Statement st = cn.createStatement();
                         PreparedStatement miSentencia = cn.prepareStatement("INSERT INTO floristeria (idFloristeria,nombre) VALUES(?,?)");
@@ -158,7 +160,6 @@ public class AppMenu {
     static boolean existeFloristeria(String nombre) {
         boolean floristeriaEnApp = false;
         int indice=0;
-
         while((floristeriaEnApp == false) && (indice < dbFloristerias.size())) {
             if(nombre.equalsIgnoreCase(dbFloristerias.get(indice).getNombre())){
                 floristeriaEnApp = true;
@@ -166,7 +167,6 @@ public class AppMenu {
                 indice ++;
             }
         }
-
         return floristeriaEnApp;
     }
     static Floristeria getFloristeriaMenu(String nombre){
