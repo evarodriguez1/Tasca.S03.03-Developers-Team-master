@@ -7,7 +7,7 @@ public class ConnectionDB_SQL {
         final String CONTROLADOR = "com.mysql.cj.jdbc.Driver";
         final String URL = "jdbc:mysql://localhost:3306/floristeria";
         final String USUARIO = "root";
-        final String CLAVE = "aldoamorfo1";
+        final String CLAVE = "";
 
         //este es el metodo para conectar a la bbdd
         public Connection conectar () {
